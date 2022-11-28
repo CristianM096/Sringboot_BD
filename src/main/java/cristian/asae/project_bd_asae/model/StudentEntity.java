@@ -1,11 +1,12 @@
 package cristian.asae.project_bd_asae.model;
 
+import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,19 +17,22 @@ import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name = "Addresses")
-public class Address {
+@Table(name = "Students")
+public class StudentEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAddress;
+    @Column(length = 10)
+    private Integer idStudent;
     @Column(length = 30, nullable = false)
-    private String residenceAddress;
+    private String dniType;
     @Column(length = 30, nullable = false)
-    private String city;
+    private String dni;
     @Column(length = 30, nullable = false)
-    private String country;
+    private String name;
+    @Column(length = 30, nullable = false)
+    private String lastname;
+    private Date dateEntry;
 
-    @OneToOne
-    @JoinColumn(name = "code", nullable = false)
-    private Student objStudent;
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "objStudent")
+    private AddressEntity objAddress;
+
 }

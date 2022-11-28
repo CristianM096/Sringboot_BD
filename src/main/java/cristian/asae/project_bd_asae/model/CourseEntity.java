@@ -22,28 +22,28 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "Courses")
-public class Course {
+public class CourseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCourse;
     @Column(length = 30, nullable = true)
     private String period;
     @Column(length = 30, nullable = true)
-    private String groupe;
+    private String name;
     
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "objCourse")
-    private List<Subject> subjects;
+    private List<SubjectEntity> subjects;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Student_Course",
             joinColumns = @JoinColumn(name = "idCourse"),
             inverseJoinColumns = @JoinColumn(name = "code"))
-    private List<Student> students;
+    private List<StudentEntity> students;
 
-    public boolean addSubject(Subject subject){
+    public boolean addSubject(SubjectEntity subject){
         return this.subjects.add(subject);
     }
-    public boolean addStudent(Student student){
+    public boolean addStudent(StudentEntity student){
         return this.students.add(student);
     }
 

@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,17 +16,19 @@ import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
-@Table(name = "Subjects")
-public class Subject {
+@Table(name = "Addresses")
+public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idSubject;
+    private Integer idAddress;
     @Column(length = 30, nullable = false)
-    private String code;
+    private String residenceAddress;
     @Column(length = 30, nullable = false)
-    private String name;
+    private String city;
+    @Column(length = 30, nullable = false)
+    private String country;
 
-    @ManyToOne
-    @JoinColumn(name = "idCourse",nullable = false)
-    private Course objCourse;
+    @OneToOne
+    @JoinColumn(name = "code", nullable = false)
+    private StudentEntity objStudent;
 }
