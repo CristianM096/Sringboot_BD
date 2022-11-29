@@ -1,11 +1,16 @@
 package cristian.asae.project_bd_asae.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,4 +34,10 @@ public class SubjectEntity {
     @ManyToOne
     @JoinColumn(name = "idCourse",nullable = false)
     private CourseEntity objCourse;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Docent_Subject",
+            joinColumns = @JoinColumn(name = "idSubject"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
+    private List<DocentEntity> docents;
 }
