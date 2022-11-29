@@ -14,6 +14,7 @@ import lombok.Setter;
 @MappedSuperclass
 public class PersonEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 10)
     private Integer id;
     @Column(length = 30, nullable = false)
