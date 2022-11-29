@@ -1,4 +1,4 @@
-package co.edu.unicauca.distribuidos.core.proyecto.services.mapper.clienteMappers;
+package cristian.asae.project_bd_asae.services.mapper.studentMapper;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
