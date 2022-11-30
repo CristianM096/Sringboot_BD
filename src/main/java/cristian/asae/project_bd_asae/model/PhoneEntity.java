@@ -1,5 +1,6 @@
 package cristian.asae.project_bd_asae.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class PhoneEntity {
     @Column(length = 20, nullable = false)
     private String number;
 
-    @ManyToOne
+    @ManyToOne( cascade = {CascadeType.ALL})
     @JoinColumn(name = "idStudent",nullable = false)
     private StudentEntity objStudent;
 }

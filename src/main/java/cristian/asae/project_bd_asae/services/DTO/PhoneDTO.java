@@ -10,6 +10,4 @@ public class PhoneDTO {
     private Integer idPhone;
     private String type;
     private String number;
-
-    private StudentDTO objStudent;
 }

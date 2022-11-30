@@ -5,21 +5,19 @@ import org.modelmapper.PropertyMap;
 import org.modelmapper.TypeMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import co.edu.unicauca.distribuidos.core.proyecto.models.ClienteEntity;
-import co.edu.unicauca.distribuidos.core.proyecto.models.DireccionEntity;
-import co.edu.unicauca.distribuidos.core.proyecto.services.DTO.ClienteDTO;
-import co.edu.unicauca.distribuidos.core.proyecto.services.DTO.DireccionDTO;
+
+import cristian.asae.project_bd_asae.model.StudentEntity;
+import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 
 @Configuration
 public class Mapper {
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper objMapper = new ModelMapper();
-        TypeMap<ClienteEntity, ClienteDTO> mapa = objMapper.emptyTypeMap(ClienteEntity.class, ClienteDTO.class);
-        // mapa.addMappings(m ->
-        // m.skip(ClienteDTO::setObjDireccion)).implicitMappings();
+        // TypeMap<StudentEntity, StudentDTO> mapa = objMapper.emptyTypeMap(StudentEntity.class, StudentDTO.class);
+        // mapa.addMappings(m -> m.skip(StudentDTO::setObjAddress)).implicitMappings();
         // mapa.addMappings(m -> m.skip(ClienteDTO::setSolicitudes)).implicitMappings();
-        mapa.addMappings(m -> m.skip(ClienteDTO::setCreateAt)).implicitMappings();
+        // mapa.addMappings(m -> m.skip(StudentDTO::setLastname)).implicitMappings();
         return objMapper;
     }
 }

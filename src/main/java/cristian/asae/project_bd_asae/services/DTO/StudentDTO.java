@@ -9,10 +9,13 @@ import lombok.Setter;
 
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class StudentDTO{
-    
+    private Integer id;
+    private String dniType;
+    private String dni;
+    private String name;
+    private String lastname;
     private Date dateEntry;
 
     private AddressDTO objAddress;
-    
     private List<PhoneDTO> phones;
 }

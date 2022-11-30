@@ -11,6 +11,4 @@ public class AddressDTO {
     private String residenceAddress;
     private String city;
     private String country;
-
-    private StudentDTO objStudent;
 }

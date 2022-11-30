@@ -22,7 +22,7 @@ public class StudentEntity extends PersonEntity{
     
     private Date dateEntry;
 
-    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "objStudent")
+    @OneToOne(optional = true, cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, mappedBy = "objStudent")
     private AddressEntity objAddress;
     
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER, mappedBy = "objStudent")
