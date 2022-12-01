@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
+import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 import cristian.asae.project_bd_asae.services.services.Course.ICourseService;
 
 
@@ -48,6 +49,16 @@ public class CourseRestController {
         CourseDTO courseCurrent = courseService.findById(id);
         if(courseCurrent != null){
             objCourse = courseService.update(id,course);
+        }
+        return objCourse;
+    }
+
+    @PostMapping(value = "/Courses/{id}&&{idStudent}")
+    public CourseDTO enrollStudent(@PathVariable Integer id,@PathVariable Integer idStudent) {
+        CourseDTO objCourse = null;
+        CourseDTO courseCurrent = courseService.findById(id);
+        if(courseCurrent != null){
+            objCourse = courseService.enrollStudent(idStudent, id);
         }
         return objCourse;
     }

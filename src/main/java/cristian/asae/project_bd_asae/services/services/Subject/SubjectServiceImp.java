@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cristian.asae.project_bd_asae.model.SubjectEntity;
-import cristian.asae.project_bd_asae.repository.CourseRepository;
 import cristian.asae.project_bd_asae.repository.SubjectRepository;
 import cristian.asae.project_bd_asae.services.DTO.SubjectDTO;
 

@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cristian.asae.project_bd_asae.model.CourseEntity;
+import cristian.asae.project_bd_asae.model.StudentEntity;
 import cristian.asae.project_bd_asae.repository.CourseRepository;
+import cristian.asae.project_bd_asae.repository.StudentRepository;
 import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
+import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 
 
 @Service
@@ -19,6 +22,9 @@ public class CourseServiceImp implements ICourseService{
 
     @Autowired
 	private CourseRepository servicioAccesoBaseDatos;
+
+    @Autowired
+    private StudentRepository servicioStudentAccesoBaseDatos;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -78,6 +84,20 @@ public class CourseServiceImp implements ICourseService{
             request = true;
         }
         return request;
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+    public CourseDTO enrollStudent(Integer idStudent, Integer idCourse) {
+        CourseEntity courseEntity = this.servicioAccesoBaseDatos.findById(idCourse).get();
+        StudentEntity studentEntity = this.servicioStudentAccesoBaseDatos.findById(idStudent).get();
+        CourseDTO courseDTO = null;
+        if(courseEntity != null && studentEntity != null){
+            courseEntity.addStudent(studentEntity);
+            CourseEntity courseEntityUpdate = this.servicioAccesoBaseDatos.save(courseEntity);
+            courseDTO = this.modelMapper.map(courseEntityUpdate, CourseDTO.class);
+        }
+        return courseDTO;
     }
     
 }
