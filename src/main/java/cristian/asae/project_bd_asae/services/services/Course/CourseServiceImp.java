@@ -14,7 +14,6 @@ import cristian.asae.project_bd_asae.model.StudentEntity;
 import cristian.asae.project_bd_asae.repository.CourseRepository;
 import cristian.asae.project_bd_asae.repository.StudentRepository;
 import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
-import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 
 
 @Service

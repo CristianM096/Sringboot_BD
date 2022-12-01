@@ -18,14 +18,18 @@ public class Mapper {
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper objMapper = new ModelMapper();
-        // TypeMap<StudentEntity, StudentDTO> mapa = objMapper.emptyTypeMap(StudentEntity.class, StudentDTO.class);
-        // mapa.addMappings(m -> m.skip(StudentDTO::setObjAddress)).implicitMappings();
-        // mapa.addMappings(m -> m.skip(StudentDTO::setLastname)).implicitMappings();
-        // TypeMap<DocentEntity, DocentDTO> docentMap = objMapper.emptyTypeMap(DocentEntity.class, DocentDTO.class);
-        // docentMap.addMappings(m -> m.skip(DocentDTO::setUniversity)).implicitMappings();
+        /* Control Student Mapping */
+        TypeMap<StudentEntity, StudentDTO> studentMap = objMapper.emptyTypeMap(StudentEntity.class, StudentDTO.class);
+        studentMap.addMappings(m -> m.skip(StudentDTO::setObjAddress)).implicitMappings();
+        studentMap.addMappings(m -> m.skip(StudentDTO::setPhones)).implicitMappings();
+        /* Control Docent Mapping */
+        TypeMap<DocentEntity, DocentDTO> docentMap = objMapper.emptyTypeMap(DocentEntity.class, DocentDTO.class);
+        docentMap.addMappings(m -> m.skip(DocentDTO::setUniversity)).implicitMappings();
+        /* Control Subject Mapping */
         TypeMap<SubjectEntity, SubjectDTO> subjectMap = objMapper.emptyTypeMap(SubjectEntity.class, SubjectDTO.class);
         // subjectMap.addMappings(m -> m.skip(SubjectDTO::setDocents)).implicitMappings();
         subjectMap.addMappings(m -> m.skip(SubjectDTO::setObjCourse)).implicitMappings();
+
         return objMapper;
     }
 }

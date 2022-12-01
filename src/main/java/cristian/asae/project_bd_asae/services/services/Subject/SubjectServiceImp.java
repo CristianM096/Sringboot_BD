@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cristian.asae.project_bd_asae.model.CourseEntity;
+import cristian.asae.project_bd_asae.model.DocentEntity;
 import cristian.asae.project_bd_asae.model.SubjectEntity;
+import cristian.asae.project_bd_asae.repository.CourseRepository;
 import cristian.asae.project_bd_asae.repository.SubjectRepository;
+import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
 import cristian.asae.project_bd_asae.services.DTO.SubjectDTO;
 
 
@@ -20,6 +24,9 @@ public class SubjectServiceImp implements ISubjectService{
 
     @Autowired
 	private SubjectRepository servicioAccesoBaseDatos;
+
+    @Autowired
+    private CourseRepository servicioCourseAccesoBaseDatos;
 
 	@Autowired
 	private ModelMapper modelMapper;
@@ -48,8 +55,14 @@ public class SubjectServiceImp implements ISubjectService{
         SubjectEntity subjectEntity = this.modelMapper.map(subject, SubjectEntity.class);
         // CourseEntity courseEntity = this.servicioCourseAccesoBaseDatos.findById(subjectEntity.getObjCourse().getIdCourse()).get();
         // courseEntity.addSubject(subjectEntity);
-        SubjectEntity subjectEntitySaved = this.servicioAccesoBaseDatos.save(subjectEntity);
-        SubjectDTO subjectDTO = this.modelMapper.map(subjectEntitySaved, SubjectDTO.class);
+        List<DocentEntity> docents = subjectEntity.getDocents();
+        CourseEntity courseEntity = subjectEntity.getObjCourse();
+        SubjectDTO subjectDTO = null;
+        if(courseEntity != null && docents.size() > 1){
+            servicioCourseAccesoBaseDatos.findById(courseEntity.getIdCourse()).get().addSubject(subjectEntity);
+            SubjectEntity subjectEntitySaved = this.servicioAccesoBaseDatos.save(subjectEntity);
+            subjectDTO = this.modelMapper.map(subjectEntitySaved, SubjectDTO.class);
+        }
         return subjectDTO;
     }
 

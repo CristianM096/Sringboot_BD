@@ -14,5 +14,5 @@ public class CourseDTO {
     private String name;
     
     private List<StudentDTO> students;
-
+    private List<SubjectDTO> subjects;
 }

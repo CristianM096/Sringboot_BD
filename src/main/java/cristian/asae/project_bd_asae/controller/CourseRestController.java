@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
-import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 import cristian.asae.project_bd_asae.services.services.Course.ICourseService;
 
 
