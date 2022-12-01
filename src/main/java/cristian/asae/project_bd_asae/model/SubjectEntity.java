@@ -32,12 +32,12 @@ public class SubjectEntity {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "idCourse",nullable = false)
+    @JoinColumn(name = "idCourse",nullable = true)
     private CourseEntity objCourse;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Docent_Subject",
             joinColumns = @JoinColumn(name = "idSubject"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+            inverseJoinColumns = @JoinColumn(name = "id") )
     private List<DocentEntity> docents;
 }

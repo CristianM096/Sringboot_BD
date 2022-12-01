@@ -13,7 +13,6 @@ public class CourseDTO {
     private String period;
     private String name;
     
-    private List<SubjectDTO> subjects;
     private List<StudentDTO> students;
 
 }

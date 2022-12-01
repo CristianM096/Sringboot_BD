@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 
 import cristian.asae.project_bd_asae.model.DocentEntity;
 import cristian.asae.project_bd_asae.model.StudentEntity;
+import cristian.asae.project_bd_asae.model.SubjectEntity;
 import cristian.asae.project_bd_asae.services.DTO.DocentDTO;
 import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
+import cristian.asae.project_bd_asae.services.DTO.SubjectDTO;
 
 @Configuration
 public class Mapper {
@@ -18,10 +20,12 @@ public class Mapper {
         ModelMapper objMapper = new ModelMapper();
         // TypeMap<StudentEntity, StudentDTO> mapa = objMapper.emptyTypeMap(StudentEntity.class, StudentDTO.class);
         // mapa.addMappings(m -> m.skip(StudentDTO::setObjAddress)).implicitMappings();
-        // mapa.addMappings(m -> m.skip(StudentDTO::setSolicitudes)).implicitMappings();
         // mapa.addMappings(m -> m.skip(StudentDTO::setLastname)).implicitMappings();
         // TypeMap<DocentEntity, DocentDTO> docentMap = objMapper.emptyTypeMap(DocentEntity.class, DocentDTO.class);
         // docentMap.addMappings(m -> m.skip(DocentDTO::setUniversity)).implicitMappings();
+        TypeMap<SubjectEntity, SubjectDTO> subjectMap = objMapper.emptyTypeMap(SubjectEntity.class, SubjectDTO.class);
+        // subjectMap.addMappings(m -> m.skip(SubjectDTO::setDocents)).implicitMappings();
+        subjectMap.addMappings(m -> m.skip(SubjectDTO::setObjCourse)).implicitMappings();
         return objMapper;
     }
 }
