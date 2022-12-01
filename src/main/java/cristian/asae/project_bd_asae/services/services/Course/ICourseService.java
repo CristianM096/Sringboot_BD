@@ -3,7 +3,6 @@ package cristian.asae.project_bd_asae.services.services.Course;
 import java.util.List;
 
 import cristian.asae.project_bd_asae.services.DTO.CourseDTO;
-import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 
 
 public interface ICourseService {
