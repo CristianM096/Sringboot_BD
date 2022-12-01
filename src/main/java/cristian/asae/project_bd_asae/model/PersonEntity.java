@@ -1,7 +1,6 @@
 package cristian.asae.project_bd_asae.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +13,7 @@ import lombok.Setter;
 @MappedSuperclass
 public class PersonEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(length = 10)
     private Integer id;
     @Column(length = 30, nullable = false)
