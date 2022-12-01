@@ -3,8 +3,6 @@ package cristian.asae.project_bd_asae.controller;
 
 import java.util.List;
 
-import javax.print.attribute.standard.NumberUp;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.qos.logback.classic.spi.STEUtil;
 import cristian.asae.project_bd_asae.services.DTO.StudentDTO;
 import cristian.asae.project_bd_asae.services.services.Student.IStudentService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,9 +26,7 @@ public class StudentRestController {
 
     @GetMapping("/Students")
     public List<StudentDTO> index() {
-        List<StudentDTO> list = studentService.findAll();
-        return list;
-        // return studentService.findAll();
+        return studentService.findAll();
     }
 
     @GetMapping("/Students/{id}")

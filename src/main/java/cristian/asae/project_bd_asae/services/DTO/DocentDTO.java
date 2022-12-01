@@ -14,7 +14,6 @@ public class DocentDTO {
     private String dni;
     private String name;
     private String lastname;
-    private Date dateEntry;
     private String university;
     private String typeDocent;
     private float salary;
